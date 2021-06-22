@@ -2,6 +2,13 @@ import random
 from phrase import Phrase
 
 
+
+#The Game instance might be responsible for things like: starting the game loop,
+#getting player's input() guesses to pass to a Phrase object to perform its
+#responsibilities against, determining if a win/loss happens after the player
+#runs out of turns or the phrase is completely guessed.
+
+
 class Game:
     def __init__(self):
         #missed: used to track the number of incorrect guesses by the user.
@@ -26,26 +33,32 @@ class Game:
         self.guesses = []
 
     def get_random_phrase(self):
-        random_phrase = self.phrases[random.randint(0,4)]
+        #get_random_phrase(): this method randomly retrieves one of
+        #the phrases stored in the phrases list and returns it.
+        random_phrase = self.phrases[random.randint(0,len(self.phrases)-1)]
         self.active_phrase = Phrase(random_phrase)
         return self.active_phrase
 
     def start(self):
+        #start(): Calls the welcome method, creates the game loop,
+        #calls the get_guess method, adds the user's guess to guesses,
+        #increments the number of missed by one if the guess is incorrect,
+        #calls the game_over method.
         #self.welcome()
         #while :
         #    Phrase.display()
         return self.get_random_phrase()
 
     def welcome():
+        #welcome(): this method prints a friendly welcome message to
+        #the user at the start of the game
         pass
 
     def get_guess():
+        #get_guess(): this method gets the guess from a user and
+        #records it in the guesses attribute
         pass
 
     def game_over():
+        #game_over(): this method displays a friendly win or loss message and ends the game.
         pass
-
-game = Game()
-print(game.phrases)
-#print(game.get_random_phrase())
-print(game.start())
