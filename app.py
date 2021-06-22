@@ -1,4 +1,5 @@
 import game
+import phrase
 
 
 #Import your Game class from the phrasehunter package.
@@ -15,3 +16,5 @@ if __name__ == '__main__':
     print(game.phrases)
     #print(game.get_random_phrase())
     print(game.start())
+    #game.get_guess()
+    print(game.guesses)

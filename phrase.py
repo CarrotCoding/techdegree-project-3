@@ -1,3 +1,4 @@
+import game
 
 
 class Phrase:
@@ -12,14 +13,16 @@ class Phrase:
     def __str__(self):
         return self.phrase
 
-    def display():
+    def __iter__(self):
+        yield from self.phrase
+
+    def display(self, phrase, letter):
         #display(): this prints out the phrase to the console with guessed letters
         #visibile and unguessed letters as underscores. For example, if the current
         #phrase is "hello world" and the user has guessed the letter "o", the output
         #should look like this: _ _ _ _ o    _ o _ _ _
         #display_phrase = []
-        #for letter in random.phrase():
-        #    letter =
+
 
 
         # phrase = blablabla
