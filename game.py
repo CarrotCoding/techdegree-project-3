@@ -18,6 +18,25 @@ class Game:
         self.continue_game = True
 
 
+    def start(self):
+        self.get_random_phrase()
+        self.welcome()
+        while self.continue_game:
+            self.active_phrase.display(self.user_phrase, self.guesses)
+            self.get_guess()
+            #the len(self.guesses)-1 checks whether the last letter added to the list is in the active_phrase
+            if self.active_phrase.check_letter(self.guesses[len(self.guesses)-1]):
+                self.user_phrase.append(self.guesses[len(self.guesses)-1])
+                if self.active_phrase.check_complete(self.guesses):
+                    self.active_phrase.display(self.user_phrase, self.guesses)
+                    self.game_over()
+                else:
+                    print("Boom, another letter down, let's go for the win\n")
+            else:
+                self.missed += 1
+                self.lives_left(self.missed)
+
+
     def get_random_phrase(self):
         self.active_phrase = Phrase(self.phrases[random.randint(0,4)])
         return self.active_phrase
@@ -84,6 +103,7 @@ You're dead, oh noes!\n""")
                 self.active_phrase = None
                 self.user_phrase = []
                 self.guesses = []
+                self.continue_game = True
                 self.start()
             elif user_try_again in ["n" or "no"]:
                 print("Thank you for playing Phrase Hunters")
@@ -92,22 +112,3 @@ You're dead, oh noes!\n""")
         except:
             print("You seem to have filled in something other than (y)es or (n)o. Please try again")
             self.try_again()
-
-
-    def start(self):
-        self.get_random_phrase()
-        self.welcome()
-        while self.continue_game:
-            self.active_phrase.display(self.user_phrase, self.guesses)
-            self.get_guess()
-            #the len(self.guesses)-1 checks whether the last letter added to the list is in the active_phrase
-            if self.active_phrase.check_letter(self.guesses[len(self.guesses)-1]):
-                self.user_phrase.append(self.guesses[len(self.guesses)-1])
-                if self.active_phrase.check_complete(self.guesses):
-                    self.active_phrase.display(self.user_phrase, self.guesses)
-                    self.game_over()
-                else:
-                    print("Boom, another letter down, let's go for the win\n")
-            else:
-                self.missed += 1
-                self.lives_left(self.missed)
