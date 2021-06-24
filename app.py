@@ -13,8 +13,8 @@ import phrase
 #Game class and method calls within that instance.
 if __name__ == '__main__':
     game = game.Game()
-    print(game.phrases)
+    #print(game.phrases)
     #print(game.get_random_phrase())
-    print(game.start())
+    game.start()
     #game.get_guess()
     print(game.guesses)
