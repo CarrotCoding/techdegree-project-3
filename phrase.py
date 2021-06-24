@@ -1,5 +1,4 @@
 import game
-import copy
 
 
 class Phrase:
